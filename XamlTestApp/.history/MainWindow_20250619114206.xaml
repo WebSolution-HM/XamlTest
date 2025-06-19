@@ -1,0 +1,160 @@
+﻿<Window x:Class="XamlTestApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:XamlTestApp"
+        mc:Ignorable="d"
+        Title="XAML DrawingImage 테스트" Height="600" Width="800"
+        Background="#f0f0f0">
+    
+    <Window.Resources>
+        <!-- 여기에 플러그인에서 생성된 DrawingImage를 붙여넣으세요 -->
+        
+        
+<DrawingImage x:Key="GizmoDrawingImage">
+    <DrawingImage.Drawing>
+        <DrawingGroup>
+            <DrawingGroup>
+                <DrawingGroup.ClipGeometry>
+                    <RectangleGeometry Rect="0,0,20,20" />
+                </DrawingGroup.ClipGeometry>
+                <GeometryDrawing>
+                    <GeometryDrawing.Pen>
+                        <Pen Brush="#FF000000" Thickness="1" StartLineCap="Flat" EndLineCap="Flat" LineJoin="Miter" />
+                    </GeometryDrawing.Pen>
+                    <GeometryDrawing.Geometry>
+                        <PathGeometry FillRule="Nonzero" Figures="M8.03027 6.85352C10.2527 6.85358 12.0918 8.74325 12.0918 11.1211C12.0917 13.4989 10.2527 15.3886 8.03027 15.3887C5.80785 15.3887 3.96882 13.4989 3.96875 11.1211C3.96875 8.74321 5.8078 6.85352 8.03027 6.85352Z" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="#FF000000">
+                    <GeometryDrawing.Geometry>
+                        <PathGeometry FillRule="EvenOdd" Figures="M15.3262 8.89337L16.0129 8.1084L19.004 10.992L18.3172 11.777L16.2556 14.132L15.5078 13.4111L17.0463 11.6525H9V10.5867H17.0826L15.3262 8.89337Z" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="#FF000000">
+                    <GeometryDrawing.Geometry>
+                        <PathGeometry FillRule="EvenOdd" Figures="M5.89558 4.72131L5.14453 4.02658L7.21299 1.75805L7.21168 1.75684L7.90144 1.00037L7.90275 1.00158L7.90355 1.0007L8.65461 1.69543L8.6538 1.69631L10.9057 3.77929L10.2159 4.53576L8.53836 2.98403V11.1201H7.51863V2.94128L5.89558 4.72131Z" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="#FF000000">
+                    <GeometryDrawing.Geometry>
+                        <PathGeometry FillRule="EvenOdd" Figures="M4.96796 17.9088L5.04592 18.9374L2.10401 18.9551L1.12292 18.9613L1.12148 18.961L1.04352 17.9324H1.04494L0.811066 14.8467L1.79218 14.8408L1.9667 17.1435L7.27407 11.5964L7.99513 12.3501L2.66336 17.9226L4.96796 17.9088Z" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+                <GeometryDrawing Brush="#FF000000">
+                    <GeometryDrawing.Geometry>
+                        <PathGeometry FillRule="Nonzero" Figures="M8.02556 12.2503C8.62217 12.2503 9.10581 11.7448 9.10581 11.1212C9.10581 10.4977 8.62217 9.99219 8.02556 9.99219C7.42896 9.99219 6.94531 10.4977 6.94531 11.1212C6.94531 11.7448 7.42896 12.2503 8.02556 12.2503Z" />
+                    </GeometryDrawing.Geometry>
+                </GeometryDrawing>
+            </DrawingGroup>
+        </DrawingGroup>
+    </DrawingImage.Drawing>
+</DrawingImage>
+
+
+        
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <!-- 제목 -->
+        <TextBlock Grid.Row="0" Text="🎨 Figma Plugin XAML 테스트" 
+                   FontSize="24" FontWeight="Bold" 
+                   HorizontalAlignment="Center" 
+                   Margin="20" Foreground="#333"/>
+        
+        <!-- 테스트 영역 -->
+        <ScrollViewer Grid.Row="1" Margin="20">
+            <StackPanel>
+                
+                <!-- 사용법 안내 -->
+                <Border Background="LightBlue" CornerRadius="5" Padding="15" Margin="0,0,0,20">
+                    <StackPanel>
+                        <TextBlock FontWeight="Bold" FontSize="16">📝 사용법:</TextBlock>
+                        <TextBlock Margin="0,5,0,0" TextWrapping="Wrap">
+                            1. Figma 플러그인에서 XAML 코드 복사
+                            <LineBreak/>
+                            2. 위의 &lt;Window.Resources&gt; 안에 붙여넣기
+                            3. 아래 예시처럼 Image로 사용
+                            <LineBreak/>
+                            4. dotnet run 명령어로 실행
+                        </TextBlock>
+                    </StackPanel>
+                </Border>
+                
+                <!-- 아이콘 테스트 영역 -->
+                <Border BorderBrush="Gray" BorderThickness="1" CornerRadius="5" Padding="20">
+                    <StackPanel>
+                        <TextBlock Text="🔍 DrawingImage 테스트:" FontWeight="Bold" FontSize="16" Margin="0,0,0,15"/>
+                        
+                        <!-- 다양한 크기로 테스트 -->
+                        <WrapPanel>
+                            <!-- 16x16 -->
+                            <StackPanel Margin="20" HorizontalAlignment="Center">
+                                <TextBlock Text="16x16" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                                <Border BorderBrush="LightGray" BorderThickness="1" Padding="5">
+                                    <Image Source="{StaticResource GridDrawingImage}" Width="16" Height="16"/>
+                                </Border>
+                            </StackPanel>
+                            
+                            <!-- 24x24 -->
+                            <StackPanel Margin="20" HorizontalAlignment="Center">
+                                <TextBlock Text="24x24" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                                <Border BorderBrush="LightGray" BorderThickness="1" Padding="5">
+                                    <Image Source="{StaticResource GridDrawingImage}" Width="24" Height="24"/>
+                                </Border>
+                            </StackPanel>
+                            
+                            <!-- 32x32 -->
+                            <StackPanel Margin="20" HorizontalAlignment="Center">
+                                <TextBlock Text="32x32" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                                <Border BorderBrush="LightGray" BorderThickness="1" Padding="5">
+                                    <Image Source="{StaticResource GridDrawingImage}" Width="32" Height="32"/>
+                                </Border>
+                            </StackPanel>
+                            
+                            <!-- 48x48 -->
+                            <StackPanel Margin="20" HorizontalAlignment="Center">
+                                <TextBlock Text="48x48" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                                <Border BorderBrush="LightGray" BorderThickness="1" Padding="5">
+                                    <Image Source="{StaticResource GridDrawingImage}" Width="48" Height="48"/>
+                                </Border>
+                            </StackPanel>
+                            
+                            <!-- 64x64 -->
+                            <StackPanel Margin="20" HorizontalAlignment="Center">
+                                <TextBlock Text="64x64" HorizontalAlignment="Center" Margin="0,0,0,5"/>
+                                <Border BorderBrush="LightGray" BorderThickness="1" Padding="5">
+                                    <Image Source="{StaticResource GridDrawingImage}" Width="64" Height="64"/>
+                                </Border>
+                            </StackPanel>
+                        </WrapPanel>
+                        
+                        <!-- 버튼에서 사용 예시 -->
+                        <TextBlock Text="🔘 버튼에서 사용 예시:" FontWeight="Bold" FontSize="14" Margin="0,20,0,10"/>
+                        <StackPanel Orientation="Horizontal">
+                            <Button Margin="5" Padding="10">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="{StaticResource GridDrawingImage}" Width="16" Height="16" Margin="0,0,5,0"/>
+                                    <TextBlock Text="Grid 버튼" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </Button>
+                            
+                            <Button Margin="5" Padding="10">
+                                <Image Source="{StaticResource GridDrawingImage}" Width="20" Height="20"/>
+                            </Button>
+                        </StackPanel>
+                        
+                    </StackPanel>
+                </Border>
+                
+            </StackPanel>
+        </ScrollViewer>
+        
+    </Grid>
+</Window>
